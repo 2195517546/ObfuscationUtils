@@ -16,7 +16,7 @@ public class TestMain {
     private static final String PROJECT_ROOT = System.getProperty("user.dir");
     private static final String DOCS_PATH = PROJECT_ROOT + File.separator + "docs";
     private static final String OUTPUT_PATH = DOCS_PATH + File.separator + "out";
-    private static final String TEST_IMAGE = DOCS_PATH + File.separator + "test.jpg";
+    private static final String TEST_IMAGE = DOCS_PATH + File.separator + "test.png";
 
     @Test
     public void testDefault() {
@@ -51,7 +51,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_tomato_encrypted_key114514.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_tomato_encrypted_key114514.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -61,7 +61,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_tomato_decrypted_key114514.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_tomato_decrypted_key114514.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -97,7 +97,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_tomato_encrypted_nokey.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_tomato_encrypted_nokey.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -107,7 +107,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_tomato_decrypted_nokey.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_tomato_decrypted_nokey.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -144,7 +144,7 @@ public class TestMain {
         System.out.println("  加密后尺寸: " + encryptedImage.getWidth() + "x" + encryptedImage.getHeight());
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_block_encrypted.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_block_encrypted.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -155,7 +155,7 @@ public class TestMain {
         System.out.println("  解密后尺寸: " + decryptedImage.getWidth() + "x" + decryptedImage.getHeight());
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_block_decrypted.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_block_decrypted.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -191,7 +191,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_rowpixel_encrypted.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_rowpixel_encrypted.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -201,7 +201,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_rowpixel_decrypted.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_rowpixel_decrypted.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -237,7 +237,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_perpixel_encrypted.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_perpixel_encrypted.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -247,7 +247,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_perpixel_decrypted.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_perpixel_decrypted.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -283,7 +283,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrow_encrypted.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrow_encrypted.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -293,7 +293,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrow_decrypted.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrow_decrypted.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -329,7 +329,7 @@ public class TestMain {
         System.out.println("✓ 加密完成");
 
         // 保存加密图片
-        String encryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrowcolumn_encrypted.jpg";
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrowcolumn_encrypted.png";
         encryptedImage.saveToFile(encryptedPath);
         System.out.println("✓ 加密图片已保存到: " + encryptedPath);
         System.out.println("  文件存在: " + new File(encryptedPath).exists());
@@ -339,7 +339,7 @@ public class TestMain {
         System.out.println("✓ 解密完成");
 
         // 保存解密图片
-        String decryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrowcolumn_decrypted.jpg";
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_picencryptrowcolumn_decrypted.png";
         decryptedImage.saveToFile(decryptedPath);
         System.out.println("✓ 解密图片已保存到: " + decryptedPath);
         System.out.println("  文件存在: " + new File(decryptedPath).exists());
@@ -349,6 +349,117 @@ public class TestMain {
             "解密后的图片应该与原图一致");
 
         System.out.println("✓ PicEncryptRowColumn 混淆测试通过！");
+        System.out.println("========================================\n");
+    }
+
+    @Test
+    public void testSortObfuscation() throws IOException {
+        System.out.println("\n========================================");
+        System.out.println("开始测试 Sort 排序混淆...");
+        System.out.println("========================================");
+
+        // 确保输出目录存在
+        File outDir = new File(OUTPUT_PATH);
+        if (!outDir.exists()) {
+            outDir.mkdirs();
+            System.out.println("✓ 创建输出目录");
+        }
+
+        // 读取原始图片
+        ImageData originalImage = ImageData.fromFile(TEST_IMAGE);
+        System.out.println("原始图片尺寸: " + originalImage.getWidth() + "x" + originalImage.getHeight());
+
+        // 加密
+        ImageData encryptedImage = Util.sortEncrypt(originalImage);
+        System.out.println("✓ 加密完成");
+
+        // 保存加密图片
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_sort_encrypted.png";
+        encryptedImage.saveToFile(encryptedPath);
+        System.out.println("✓ 加密图片已保存到: " + encryptedPath);
+        System.out.println("  文件存在: " + new File(encryptedPath).exists());
+
+        // 解密
+        ImageData decryptedImage = Util.sortDecrypt(encryptedImage);
+        System.out.println("✓ 解密完成");
+
+        // 保存解密图片
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_sort_decrypted.png";
+        decryptedImage.saveToFile(decryptedPath);
+        System.out.println("✓ 解密图片已保存到: " + decryptedPath);
+        System.out.println("  文件存在: " + new File(decryptedPath).exists());
+
+        // 验证解密后的图片与原图一致
+        assertArrayEquals(originalImage.getPixels(), decryptedImage.getPixels(),
+            "解密后的图片应该与原图一致");
+
+        System.out.println("✓ Sort 排序混淆测试通过！");
+        System.out.println("========================================\n");
+    }
+
+    @Test
+    public void testRandomObfuscation() throws IOException {
+        System.out.println("\n========================================");
+        System.out.println("开始测试 Random 随机混淆 (seed = 114514)...");
+        System.out.println("========================================");
+
+        // 确保输出目录存在
+        File outDir = new File(OUTPUT_PATH);
+        if (!outDir.exists()) {
+            outDir.mkdirs();
+            System.out.println("✓ 创建输出目录");
+        }
+
+        // 读取原始图片
+        ImageData originalImage = ImageData.fromFile(TEST_IMAGE);
+        System.out.println("原始图片尺寸: " + originalImage.getWidth() + "x" + originalImage.getHeight());
+
+        String seed = "114514";
+
+        // 加密
+        ImageData encryptedImage = Util.randomEncrypt(seed, originalImage);
+        System.out.println("✓ 加密完成");
+
+        // 保存加密图片
+        String encryptedPath = OUTPUT_PATH + File.separator + "test_random_encrypted.png";
+        encryptedImage.saveToFile(encryptedPath);
+        System.out.println("✓ 加密图片已保存到: " + encryptedPath);
+        System.out.println("  文件存在: " + new File(encryptedPath).exists());
+
+        // 解密
+        ImageData decryptedImage = Util.randomDecrypt(seed, encryptedImage);
+        System.out.println("✓ 解密完成");
+
+        // 保存解密图片
+        String decryptedPath = OUTPUT_PATH + File.separator + "test_random_decrypted.png";
+        decryptedImage.saveToFile(decryptedPath);
+        System.out.println("✓ 解密图片已保存到: " + decryptedPath);
+        System.out.println("  文件存在: " + new File(decryptedPath).exists());
+
+        // 验证解密后的图片与原图的差异（最后一行可能有RGB565压缩损失）
+        int[] originalPixels = originalImage.getPixels();
+        int[] decryptedPixels = decryptedImage.getPixels();
+
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        int lastRowY = height - 1;
+        int lastRowStart = lastRowY * width;
+        int lastRowEnd = lastRowStart + width;
+
+        int differentPixels = 0;
+        for (int i = 0; i < originalPixels.length; i++) {
+            // 跳过最后一行（因为有RGB565压缩）
+            if (i >= lastRowStart && i < lastRowEnd) {
+                continue;
+            }
+            if (originalPixels[i] != decryptedPixels[i]) {
+                differentPixels++;
+            }
+        }
+
+        assertEquals(0, differentPixels, "除最后一行外的像素应该完全一致");
+
+        System.out.println("✓ Random 随机混淆测试通过！");
         System.out.println("========================================\n");
     }
 }
