@@ -9,7 +9,23 @@
 - 🔄 **可逆加密**：所有算法支持加密和解密，使用正确的密钥可以完美还原
 - 📦 **易于集成**：提供简单的 API，一行代码即可完成混淆/解混淆
 - 🎨 **支持多种格式**：支持 PNG、JPG、GIF 等常见图片格式
-- 
+
+## 在项目中引入
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.2195517546</groupId>
+    <artifactId>ObfuscationUtils</artifactId>
+    <version>1.1.0</version>
+</dependency>
+```
+
 ## API 文档
 
 ### ImageData 类

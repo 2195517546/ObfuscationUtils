@@ -106,4 +106,70 @@ public class Util {
         }
     }
 
+    /**
+     * 排序混淆加密
+     * @param imageData 图片数据
+     * @return 加密后的图片数据
+     */
+    public static ImageData sortEncrypt(ImageData imageData) {
+        SortObfuscation sortObfuscation = new SortObfuscation(imageData);
+        return sortObfuscation.encrypt();
+    }
+
+    /**
+     * 排序混淆解密
+     * @param imageData 图片数据
+     * @return 解密后的图片数据
+     */
+    public static ImageData sortDecrypt(ImageData imageData) {
+        SortObfuscation sortObfuscation = new SortObfuscation(imageData);
+        return sortObfuscation.decrypt();
+    }
+
+    /**
+     * 随机混淆加密（使用种子）
+     * @param seed 随机种子
+     * @param imageData 图片数据
+     * @return 加密后的图片数据
+     */
+    public static ImageData randomEncrypt(String seed, ImageData imageData) {
+        try {
+            long seedLong = Long.parseLong(seed);
+            RandomObfuscation randomObfuscation = new RandomObfuscation(imageData, seedLong);
+            return randomObfuscation.encrypt();
+        } catch (Exception e) {
+            // 如果无法解析为long，使用seed的hashCode作为种子
+            RandomObfuscation randomObfuscation = new RandomObfuscation(imageData, seed.hashCode());
+            return randomObfuscation.encrypt();
+        }
+    }
+
+    /**
+     * 随机混淆解密（使用种子）
+     * @param seed 随机种子
+     * @param imageData 图片数据
+     * @return 解密后的图片数据
+     */
+    public static ImageData randomDecrypt(String seed, ImageData imageData) {
+        try {
+            long seedLong = Long.parseLong(seed);
+            RandomObfuscation randomObfuscation = new RandomObfuscation(imageData, seedLong);
+            return randomObfuscation.decrypt();
+        } catch (Exception e) {
+            // 如果无法解析为long，使用seed的hashCode作为种子
+            RandomObfuscation randomObfuscation = new RandomObfuscation(imageData, seed.hashCode());
+            return randomObfuscation.decrypt();
+        }
+    }
+
+    /**
+     * 随机混淆加密（使用当前时间戳作为种子）
+     * @param imageData 图片数据
+     * @return 加密后的图片数据
+     */
+    public static ImageData randomEncrypt(ImageData imageData) {
+        RandomObfuscation randomObfuscation = new RandomObfuscation(imageData);
+        return randomObfuscation.encrypt();
+    }
+
 }
