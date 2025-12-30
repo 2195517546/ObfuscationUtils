@@ -6,12 +6,7 @@ build/
 !**/src/test/**/build/
 .kotlin
 
-### Test directories ###
-# 不忽略测试代码，但在 Git 中保留
 # src/test/
-
-### Documentation ###
-# 忽略 docs 目录，只保留 README
 docs/
 
 ### IntelliJ IDEA ###
