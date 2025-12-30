@@ -28,6 +28,8 @@
 
 ## API 文档
 
+- 项目工具类均在com.uiloalxise.*下
+
 ### ImageData 类
 
 主要的图片数据封装类。
