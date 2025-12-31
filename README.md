@@ -4,11 +4,13 @@
 
 ## 功能特性
 
-- 🔐 **多种混淆算法**：支持 Tomato、Block、RowPixel、PerPixel、PicEncryptRow、PicEncryptRowColumn 等多种混淆算法
+- 🔐 **多种混淆算法**：支持 Tomato、Block、RowPixel、PerPixel、PicEncryptRow、PicEncryptRowColumn、Sort、Random 等多种混淆算法
 - 🚀 **高性能**：利用多线程并行处理，支持大尺寸图片
+- ⚡ **异步操作支持**：完整的异步 API，基于 CompletableFuture，适配高并发场景
 - 🔄 **可逆加密**：所有算法支持加密和解密，使用正确的密钥可以完美还原
 - 📦 **易于集成**：提供简单的 API，一行代码即可完成混淆/解混淆
 - 🎨 **支持多种格式**：支持 PNG、JPG、GIF 等常见图片格式
+- 🌐 **框架友好**：完美适配 Spring Boot、WebFlux 等异步框架
 
 ## 在项目中引入
 ```xml
@@ -237,6 +239,86 @@ ImageData encrypted = Util.picEncryptRowColumnEncrypt("0.618", imageData);
 ImageData decrypted = Util.picEncryptRowColumnDecrypt("0.618", encrypted);
 ```
 
+#### 7. Sort 混淆（排序混淆）
+```java
+// 加密（无需密钥）
+ImageData encrypted = Util.sortEncrypt(imageData);
+// 解密
+ImageData decrypted = Util.sortDecrypt(encrypted);
+```
+
+#### 8. Random 混淆（随机混淆）
+```java
+// 使用种子加密
+ImageData encrypted = Util.randomEncrypt("114514", imageData);
+// 使用相同种子解密
+ImageData decrypted = Util.randomDecrypt("114514", encrypted);
+```
+
+### 异步 API 使用
+
+从 v1.2 开始，ObfuscationUtils 提供了完整的异步操作支持，适用于高并发场景和响应式编程。
+
+#### 异步加载和保存图片
+
+```java
+import com.uiloalxise.async.AsyncImageData;
+import com.uiloalxise.async.AsyncUtil;
+
+// 异步加载图片
+CompletableFuture<ImageData> future = AsyncImageData.fromFileAsync("input.png");
+
+// 异步保存图片
+CompletableFuture<Void> saveFuture = AsyncImageData.saveToFileAsync(imageData, "output.png");
+
+// 链式异步操作
+AsyncImageData.fromFileAsync("input.png")
+    .thenCompose(img -> AsyncUtil.tomatoEncryptAsync("0.618", img))
+    .thenCompose(encrypted -> AsyncImageData.saveToFileAsync(encrypted, "encrypted.png"))
+    .thenRun(() -> System.out.println("完成！"))
+    .exceptionally(ex -> {
+        ex.printStackTrace();
+        return null;
+    });
+```
+
+#### 异步混淆操作
+
+```java
+// 异步 Tomato 加密
+CompletableFuture<ImageData> encrypted = AsyncUtil.tomatoEncryptAsync("0.618", imageData);
+
+// 异步解密
+CompletableFuture<ImageData> decrypted = AsyncUtil.tomatoDecryptAsync("0.618", encrypted.get());
+
+// 对象级异步 API
+TomatoObfuscation obfuscation = new TomatoObfuscation(imageData, 0.618);
+CompletableFuture<ImageData> future = obfuscation.encryptAsync();
+```
+
+#### Spring Boot 异步集成示例
+
+```java
+@RestController
+@RequestMapping("/api/image")
+public class ImageController {
+    
+    @PostMapping("/encrypt")
+    public CompletableFuture<ResponseEntity<byte[]>> encryptImage(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("key") String key) {
+        
+        return AsyncImageData.fromMultipartFileAsync(file)
+            .thenCompose(img -> AsyncUtil.tomatoEncryptAsync(key, img))
+            .thenCompose(encrypted -> AsyncImageData.toBytesAsync(encrypted))
+            .thenApply(bytes -> ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_PNG)
+                .body(bytes))
+            .exceptionally(ex -> ResponseEntity.status(500).build());
+    }
+}
+```
+
 ### ImageData 支持多种输入方式
 
 ```java
@@ -244,14 +326,29 @@ ImageData decrypted = Util.picEncryptRowColumnDecrypt("0.618", encrypted);
 ImageData image1 = ImageData.fromFile("path/to/image.jpg");
 ImageData image2 = ImageData.fromFile("path/to/image.png");
 
+// 从 Spring Boot MultipartFile 加载（Controller 接口）
+ImageData image3 = ImageData.fromMultipartFile(file);
+
+// 从 InputStream 加载
+ImageData image4 = ImageData.fromInputStream(inputStream, "jpg");
+
+// 从字节数组加载
+ImageData image5 = ImageData.fromBytes(bytes, "png");
+
 // 从像素数组创建
 int[] pixels = ...; // ARGB 格式的像素数组
-ImageData image3 = new ImageData(pixels, width, height);
-ImageData image4 = new ImageData(pixels, width, height, "jpg");
+ImageData image6 = new ImageData(pixels, width, height);
+ImageData image7 = new ImageData(pixels, width, height, "jpg");
 
 // 保存到文件
 image1.saveToFile("output.jpg");
 image2.saveToFile("output.png");
+
+// 转换为字节数组
+byte[] bytes = image1.toBytes();
+
+// 转换为 InputStream
+InputStream is = image1.toInputStream();
 ```
 
 ## 注意事项
@@ -265,6 +362,10 @@ image2.saveToFile("output.png");
    - Tomato 混淆需要数字密钥
    - Block、RowPixel、PerPixel 支持任意字符串
    - PicEncryptRow 和 PicEncryptRowColumn 只支持浮点数密钥(输入字符串需能转换为浮点数，快速工具默认是0.114514)
+5. **异步操作**：
+   - 异步操作适用于高并发场景和批量处理
+   - 记得在应用关闭时调用 `ObfuscationExecutor.shutdown()` 关闭线程池
+   - 支持自定义线程池，提供更灵活的资源管理
 
 ## 许可证
 
