@@ -1,6 +1,10 @@
 package com.uiloalxise.utils.base;
 
 import com.uiloalxise.ImageData;
+import com.uiloalxise.async.ObfuscationExecutor;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
 
 /**
  * @author Uiloalxise
@@ -108,6 +112,65 @@ public abstract class ImageObfuscation {
 
 	public String getFormat() {
 		return format;
+	}
+
+	/**
+	 * 异步处理方法
+	 *
+	 * @param processType 处理类型（加密或解密）
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> processAsync(ProcessType processType) {
+		return processAsync(processType, ObfuscationExecutor.getExecutor());
+	}
+
+	/**
+	 * 异步处理方法（使用自定义线程池）
+	 *
+	 * @param processType 处理类型（加密或解密）
+	 * @param executor 自定义线程池
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> processAsync(ProcessType processType, ExecutorService executor) {
+		return CompletableFuture.supplyAsync(() -> process(processType), executor);
+	}
+
+	/**
+	 * 异步加密图片
+	 *
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> encryptAsync() {
+		return encryptAsync(ObfuscationExecutor.getExecutor());
+	}
+
+	/**
+	 * 异步加密图片（使用自定义线程池）
+	 *
+	 * @param executor 自定义线程池
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> encryptAsync(ExecutorService executor) {
+		return processAsync(ProcessType.ENCRYPT, executor);
+	}
+
+	/**
+	 * 异步解密图片
+	 *
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> decryptAsync() {
+		return decryptAsync(ObfuscationExecutor.getExecutor());
+	}
+
+	/**
+	 * 异步解密图片（使用自定义线程池）
+	 *
+	 * @param executor 自定义线程池
+	 * @return CompletableFuture<ImageData>
+	 */
+	public CompletableFuture<ImageData> decryptAsync(ExecutorService executor) {
+		return processAsync(ProcessType.DECRYPT, executor);
 	}
 }
 
